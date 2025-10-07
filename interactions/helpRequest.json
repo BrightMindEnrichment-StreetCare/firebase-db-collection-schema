@@ -1,0 +1,57 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "HelpRequest",
+  "description": "Schema for a document in the 'HelpRequest' collection, which tracks an instance of providing or identifying a need for help.",
+  "type": "object",
+  "properties": {
+    "interactionLogDocId": {
+      "type": "string",
+      "description": "The document ID of the related entry in the 'InteractionLog' collection."
+    },
+    "firstName": {
+      "type": "string",
+      "description": "The first name of the person receiving help. This is shown publicly."
+    },
+    "locationLandmark": {
+      "type": "string",
+      "description": "A public landmark or general location of the interaction (no private addresses)."
+    },
+    "timeOfInteraction": {
+      "type": ["string", "null"],
+      "format": "date-time",
+      "description": "The ISO 8601 timestamp of when the interaction occurred. Can be null. Represents a Firestore Timestamp."
+    },
+    "helpProvidedCategory": {
+      "type": "array",
+      "description": "A list of categories describing the help that was provided.",
+      "items": {
+        "type": "string"
+      }
+    },
+    "furtherHelpCategory": {
+      "type": "array",
+      "description": "A list of categories describing any further help that is needed.",
+      "items": {
+        "type": "string"
+      }
+    },
+    "followUpDateTime": {
+      "type": ["string", "null"],
+      "format": "date-time",
+      "description": "The scheduled date and time for a follow-up. Can be null. Represents a Firestore Timestamp."
+    },
+    "additionalDetails": {
+      "type": "string",
+      "description": "Any additional public notes or details about the help request."
+    },
+    "interactionLogFirstName": {
+      "type": "string",
+      "description": "Denormalized first name from the interaction log for quick reference and display purposes."
+    }
+  },
+  "required": [
+    "interactionLogDocId",
+    "firstName",
+    "locationLandmark"
+  ]
+}
