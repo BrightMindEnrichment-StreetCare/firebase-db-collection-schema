@@ -1,0 +1,112 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Interaction Log",
+  "description": "Schema for a document in the 'InteractionLog' collection. Each document represents a single interaction or visit.",
+  "type": "object",
+  "properties": {
+    "userId": {
+      "type": "string",
+      "description": "The document ID from the 'users' collection for the user who created this log."
+    },
+    "outreachId": {
+      "type": ["string", "null"],
+      "description": "The ID of the outreach event this log is associated with (for future use)."
+    },
+    "firstName": {
+      "type": "string",
+      "description": "The first name of the person interacted with."
+    },
+    "lastName": {
+      "type": "string",
+      "description": "The last name of the person interacted with (for internal use only, not public)."
+    },
+    "email": {
+      "type": "string",
+      "format": "email",
+      "description": "The email address of the person interacted with."
+    },
+    "phoneNumber": {
+      "type": "string",
+      "description": "The 10-digit phone number without any formatting.",
+      "pattern": "^[0-9]{10}$"
+    },
+    "interactionStartDateTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The combined start date and time of the interaction. Represents a Firestore Timestamp."
+    },
+    "interactionEndDateTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The combined end date and time of the interaction. Represents a Firestore Timestamp."
+    },
+    "street1": {
+      "type": "string",
+      "description": "Street address line 1."
+    },
+    "street2": {
+      "type": ["string", "null"],
+      "description": "Street address line 2 (optional)."
+    },
+    "city": {
+      "type": "string"
+    },
+    "state": {
+      "type": "string"
+    },
+    "zipCode": {
+      "type": "string",
+      "pattern": "^[0-9]{5}$"
+    },
+    "country": {
+      "type": "string",
+      "default": "USA"
+    },
+    "listOfSupportsProvided": {
+      "type": "array",
+      "description": "A list of support categories that were provided during the interaction.",
+      "items": {
+        "type": "string"
+      }
+    },
+    "numPeopleHelped": {
+      "type": "integer",
+      "description": "The total number of people helped during this interaction.",
+      "minimum": 0
+    },
+    "numPeopleJoined": {
+      "type": "integer",
+      "description": "The number of other volunteers or team members who joined in this interaction.",
+      "minimum": 0
+    },
+    "carePackagesDistributed": {
+      "type": "integer",
+      "description": "The number of care packages that were given out.",
+      "minimum": 0
+    },
+    "carePackageContents": {
+      "type": "array",
+      "description": "A list of items that were included in the distributed care packages.",
+      "items": {
+        "type": "string"
+      }
+    },
+    "helpRequestCount": {
+      "type": "integer",
+      "description": "The number of new help requests that were created as a result of this interaction.",
+      "minimum": 0
+    },
+    "helpRequestsCollectionIds": {
+      "type": "array",
+      "description": "A list of document IDs from the 'HelpRequest' collection that are linked to this log.",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "userId",
+    "firstName",
+    "interactionStartDateTime"
+  ]
+}
