@@ -12,14 +12,18 @@
       "type": "string",
       "description": "The first name of the person receiving help. This is shown publicly."
     },
+    "lastName": {
+      "type": "string",
+      "description": "The last name of the person receiving help. Internal use only, private."
+    },
     "locationLandmark": {
       "type": "string",
       "description": "A public landmark or general location of the interaction (no private addresses)."
     },
-    "timeOfInteraction": {
+    "timestampOfInteraction": {
       "type": ["string", "null"],
       "format": "date-time",
-      "description": "The ISO 8601 timestamp of when the interaction occurred. Can be null. Represents a Firestore Timestamp."
+      "description": "The ISO 8601 timestamp of when the interaction occurred. Can be null. Duplicate the Date from the Interaction Log. Represents a Firestore Timestamp."
     },
     "helpProvidedCategory": {
       "type": "array",
@@ -47,6 +51,31 @@
     "interactionLogFirstName": {
       "type": "string",
       "description": "Denormalized first name from the interaction log for quick reference and display purposes."
+    },
+    "isPublic": {
+      "type": "boolean",
+      "description": "Determines if this record should be made public, read from the form's consent checkmark.",
+      "default": "true"
+    },
+    "status": {
+      "type": "string",
+      "description": "Denotes the current status of approval for the help request.",
+      "default": "Pending"
+    },
+    "lastModifiedTimestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The last modified time stamp, it should be updated with current timestamp when status changes or the log is edited."
+    },
+    "lastActionPerformed": {
+      "type": "string",
+      "description": "ToDo: define what actions are to be considered to track, that aren't tracked by status. Eg: Edited, Re-edited.",
+      "default": null
+    },
+    "completedTimestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Once marked complete, the help request should no longer show up in the default search listings."
     }
   },
   "required": [

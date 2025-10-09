@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "Interaction Log",
+  "title": "InteractionLog",
   "description": "Schema for a document in the 'InteractionLog' collection. Each document represents a single interaction or visit.",
   "type": "object",
   "properties": {
@@ -14,37 +14,42 @@
     },
     "firstName": {
       "type": "string",
-      "description": "The first name of the person interacted with."
+      "description": "The first name of the person who volunteeted."
     },
     "lastName": {
       "type": "string",
-      "description": "The last name of the person interacted with (for internal use only, not public)."
+      "description": "The last name of the person who volunteeted (for internal use only, not public)."
     },
     "email": {
       "type": "string",
       "format": "email",
-      "description": "The email address of the person interacted with."
+      "description": "The email address of the person who volunteeted."
     },
     "phoneNumber": {
       "type": "string",
-      "description": "The 10-digit phone number without any formatting.",
+      "description": "The 10-digit phone number without any formatting of the person who volunteered.",
       "pattern": "^[0-9]{10}$"
     },
     "interactionStartDateTime": {
       "type": "string",
       "format": "date-time",
-      "description": "The combined start date and time of the interaction. Represents a Firestore Timestamp."
+      "description": "The combined start date and time of the interaction. Represents a Firestore Timestamp. Use interactionDate for the date."
     },
     "interactionEndDateTime": {
       "type": "string",
       "format": "date-time",
-      "description": "The combined end date and time of the interaction. Represents a Firestore Timestamp."
+      "description": "The combined end date and time of the interaction. Represents a Firestore Timestamp. Use interactionDate for the date."
     },
-    "street1": {
+    "interactionDate":{
+      "type": "string",
+      "format": "date",
+      "description": "The day/date of the interaction"
+    },
+    "addr1": {
       "type": "string",
       "description": "Street address line 1."
     },
-    "street2": {
+    "addr2": {
       "type": ["string", "null"],
       "description": "Street address line 2 (optional)."
     },
@@ -96,17 +101,33 @@
       "description": "The number of new help requests that were created as a result of this interaction.",
       "minimum": 0
     },
-    "helpRequestsCollectionIds": {
+    "helpRequestDocIds": {
       "type": "array",
       "description": "A list of document IDs from the 'HelpRequest' collection that are linked to this log.",
       "items": {
         "type": "string"
       }
+    },
+    "isPublic": {
+      "type": "boolean",
+      "description": "Determines if this record should be made public, read from the form's consent checkmark.",
+      "default": "true"
+    },
+    "status": {
+      "type": "string",
+      "description": "Denotes the current status of approval for the interaction log.",
+      "default": "Pending"
+    },
+    "lastModifiedTimestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The last modified time stamp, it should be updated with current timestamp when status changes or the log is edited.",
+      "default": null
+    },
+    "lastActionPerformed": {
+      "type": "string",
+      "description": "ToDo: define what actions are to be considered to track, that aren't tracked by status. Eg: Edited, Re-edited.",
+      "default": null
     }
-  },
-  "required": [
-    "userId",
-    "firstName",
-    "interactionStartDateTime"
-  ]
+  }
 }
