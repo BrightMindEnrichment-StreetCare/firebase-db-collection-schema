@@ -75,7 +75,12 @@
     "completedTimestamp": {
       "type": "string",
       "format": "date-time",
-      "description": "Once marked complete, the help request should no longer show up in the default search listings."
+      "description": "Holds when the Help request is marked as completed."
+    },
+    "isCompleted": {
+      "type": "boolean",
+      "description": "Once marked complete, the help request should no longer show up in the default search listings.",
+      "default": false
     }
   },
   "required": [
