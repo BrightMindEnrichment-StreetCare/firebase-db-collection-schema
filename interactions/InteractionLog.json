@@ -30,12 +30,12 @@
       "description": "The 10-digit phone number without any formatting of the person who volunteered.",
       "pattern": "^[0-9]{10}$"
     },
-    "interactionStartDateTime": {
+    "startTimestamp": {
       "type": "string",
       "format": "date-time",
       "description": "The combined start date and time of the interaction. Represents a Firestore Timestamp. Use interactionDate for the date."
     },
-    "interactionEndDateTime": {
+    "endTimestamp": {
       "type": "string",
       "format": "date-time",
       "description": "The combined end date and time of the interaction. Represents a Firestore Timestamp. Use interactionDate for the date."
