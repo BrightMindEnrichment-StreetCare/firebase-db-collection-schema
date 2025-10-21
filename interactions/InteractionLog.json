@@ -30,20 +30,49 @@
       "description": "The 10-digit phone number without any formatting of the person who volunteered.",
       "pattern": "^[0-9]{10}$"
     },
-    "startTimestamp": {
-      "type": "string",
-      "format": "date-time",
-      "description": "The combined start date and time of the interaction. Represents a Firestore Timestamp. Use interactionDate for the date."
-    },
-    "endTimestamp": {
-      "type": "string",
-      "format": "date-time",
-      "description": "The combined end date and time of the interaction. Represents a Firestore Timestamp. Use interactionDate for the date."
-    },
     "interactionDate":{
       "type": "string",
       "format": "date",
       "description": "The day/date of the interaction"
+    },
+    "startTimestamp": {
+      "type": "string",
+      "format": "timestamp",
+      "description": "The combined start date and time of the interaction. Represents a Firestore Timestamp. Use interactionDate for the date."
+    },
+    "endTimestamp": {
+      "type": "string",
+      "format": "timestamp",
+      "description": "The combined end date and time of the interaction. Represents a Firestore Timestamp. Use interactionDate for the date."
+    },
+    "listOfSupportsProvided": {
+      "type": "array",
+      "description": "A list of support categories that were provided during the interaction.",
+      "items": {
+        "type": "string"
+      }
+    },
+    "numPeopleHelped": {
+      "type": "integer",
+      "description": "The total number of people helped during this interaction.",
+      "minimum": 0
+    },
+    "carePackagesDistributed": {
+      "type": "integer",
+      "description": "The number of care packages that were given out.",
+      "minimum": 0
+    },
+    "carePackageContents": {
+      "type": "array",
+      "description": "A list of items that were included in the distributed care packages.",
+      "items": {
+        "type": "string"
+      }
+    },
+    "numPeopleJoined": {
+      "type": "integer",
+      "description": "The number of other volunteers or team members who joined in this interaction.",
+      "minimum": 0
     },
     "addr1": {
       "type": "string",
@@ -59,42 +88,13 @@
     "state": {
       "type": "string"
     },
-    "zipCode": {
+    "zipcode": {
       "type": "string",
       "pattern": "^[0-9]{5}$"
     },
     "country": {
       "type": "string",
       "default": "USA"
-    },
-    "listOfSupportsProvided": {
-      "type": "array",
-      "description": "A list of support categories that were provided during the interaction.",
-      "items": {
-        "type": "string"
-      }
-    },
-    "numPeopleHelped": {
-      "type": "integer",
-      "description": "The total number of people helped during this interaction.",
-      "minimum": 0
-    },
-    "numPeopleJoined": {
-      "type": "integer",
-      "description": "The number of other volunteers or team members who joined in this interaction.",
-      "minimum": 0
-    },
-    "carePackagesDistributed": {
-      "type": "integer",
-      "description": "The number of care packages that were given out.",
-      "minimum": 0
-    },
-    "carePackageContents": {
-      "type": "array",
-      "description": "A list of items that were included in the distributed care packages.",
-      "items": {
-        "type": "string"
-      }
     },
     "helpRequestCount": {
       "type": "integer",
@@ -120,7 +120,7 @@
     },
     "lastModifiedTimestamp": {
       "type": "string",
-      "format": "date-time",
+      "format": "timestamp",
       "description": "The last modified time stamp, it should be updated with current timestamp when status changes or the log is edited.",
       "default": null
     },

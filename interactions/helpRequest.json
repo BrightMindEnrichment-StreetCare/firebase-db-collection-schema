@@ -22,7 +22,7 @@
     },
     "timestampOfInteraction": {
       "type": ["string", "null"],
-      "format": "date-time",
+      "format": "timestamp",
       "description": "The ISO 8601 timestamp of when the interaction occurred. Can be null. Duplicate the Date from the Interaction Log. Represents a Firestore Timestamp."
     },
     "helpProvidedCategory": {
@@ -39,9 +39,9 @@
         "type": "string"
       }
     },
-    "followUpDateTime": {
+    "followUpTimestamp": {
       "type": ["string", "null"],
-      "format": "date-time",
+      "format": "timestamp",
       "description": "The scheduled date and time for a follow-up. Can be null. Represents a Firestore Timestamp."
     },
     "additionalDetails": {
@@ -64,7 +64,7 @@
     },
     "lastModifiedTimestamp": {
       "type": "string",
-      "format": "date-time",
+      "format": "timestamp",
       "description": "The last modified time stamp, it should be updated with current timestamp when status changes or the log is edited."
     },
     "lastActionPerformed": {
@@ -74,7 +74,7 @@
     },
     "completedTimestamp": {
       "type": "string",
-      "format": "date-time",
+      "format": "timestamp",
       "description": "Holds when the Help request is marked as completed."
     },
     "isCompleted": {
@@ -82,10 +82,5 @@
       "description": "Once marked complete, the help request should no longer show up in the default search listings.",
       "default": false
     }
-  },
-  "required": [
-    "interactionLogDocId",
-    "firstName",
-    "locationLandmark"
-  ]
+  }
 }
