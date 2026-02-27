@@ -116,7 +116,8 @@
     "status": {
       "type": "string",
       "description": "Denotes the current status of approval for the interaction log. | Valid options: pending, approved, rejected",
-      "default": "pending"
+      "default": "pending",
+      "comments": "THIS IS A COMMENT IN JSON: Rename reject in status to reject-with-reason, on the basis of: every reject will go for editing (and edits are possible until a predefined time, if we decide to slide that in.)"
     },
     "lastModifiedTimestamp": {
       "type": "string",
@@ -127,7 +128,8 @@
     "lastActionPerformed": {
       "type": "string",
       "description": "A verbose field of status. | Valid options: accept, reject, reject-with-reason, edit, and submit",
-      "default": null
+      "default": null,
+      "comments": "THIS IS A COMMENT IN JSON: Rename reject in status to reject-with-reason, on the basis of: every reject will go for editing (and edits are possible until a predefined time, if we decide to slide that in.)"
     }
   }
 }
