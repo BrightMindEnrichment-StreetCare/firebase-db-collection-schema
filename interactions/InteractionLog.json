@@ -115,8 +115,8 @@
     },
     "status": {
       "type": "string",
-      "description": "Denotes the current status of approval for the interaction log.",
-      "default": "Pending"
+      "description": "Denotes the current status of approval for the interaction log. | Valid options: pending, approved, rejected",
+      "default": "pending"
     },
     "lastModifiedTimestamp": {
       "type": "string",
@@ -126,7 +126,7 @@
     },
     "lastActionPerformed": {
       "type": "string",
-      "description": "ToDo: define what actions are to be considered to track, that aren't tracked by status. Eg: Edited, Re-edited.",
+      "description": "A verbose field of status. | Valid options: accept, reject, reject-with-reason, edit, and submit",
       "default": null
     }
   }
